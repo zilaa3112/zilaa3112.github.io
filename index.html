@@ -1,0 +1,2074 @@
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Nunito', 'Quicksand', sans-serif;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+        background-color: var(--bg-cream);
+        color: var(--text-main);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        background-image: radial-gradient(#E52E2E15 1.5px, transparent 1.5px);
+        background-size: 24px 24px;
+    }
+
+    /* HEADER NAVIGASI */
+    header {
+        background: linear-gradient(135deg, var(--primary-red), #B71C1C);
+        color: white;
+        padding: 12px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 15px rgba(229, 46, 46, 0.3);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .brand-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.2rem;
+        font-weight: 900;
+        cursor: pointer;
+    }
+
+    .brand-logo span {
+        background: var(--primary-gold);
+        color: #8D6E63;
+        padding: 4px 10px;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+    }
+
+    .nav-controls {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .btn-icon {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .btn-icon:hover {
+        background: rgba(255, 255, 255, 0.35);
+        transform: scale(1.08);
+    }
+
+    .user-greeting {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 700;
+    }
+
+    /* LAYOUT APLIKASI */
+    main {
+        flex: 1;
+        max-width: 1000px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .screen {
+        display: none;
+        animation: fadeIn 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+    }
+
+    .screen.active {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* KOMPONEN KARTU UTAMA */
+    .card {
+        background: var(--card-bg);
+        border-radius: var(--radius-lg);
+        padding: 28px;
+        box-shadow: var(--shadow-soft);
+        border: 3px solid #F0EAE1;
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    /* BANNER & FOTO REGULAR */
+    .img-container {
+        width: 100%;
+        text-align: center;
+        margin: 15px 0;
+        background: #FFF8E7;
+        padding: 15px;
+        border-radius: var(--radius-md);
+        border: 2px dashed var(--primary-gold-dark);
+        position: relative;
+    }
+
+    .img-container img {
+        max-width: 100%;
+        max-height: 280px;
+        object-fit: contain;
+        border-radius: var(--radius-sm);
+        transition: transform 0.3s ease;
+    }
+
+    .img-container img:hover {
+        transform: scale(1.03);
+    }
+
+    .img-caption {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-top: 8px;
+        font-weight: 600;
+    }
+
+    .img-credit {
+        font-size: 0.75rem;
+        color: #8D6E63;
+        margin-top: 2px;
+        font-style: italic;
+    }
+
+    /* FALLBACK TEKS JIKA GAMBAR GAGAL LOAD */
+    .img-fallback {
+        display: none;
+        padding: 20px;
+        background: #FFE0B2;
+        color: #E65100;
+        border-radius: var(--radius-sm);
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    /* TOMBOL BESAR & INTERAKTIF */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 14px 28px;
+        font-size: 1.1rem;
+        font-weight: 800;
+        border: none;
+        border-radius: var(--radius-md);
+        cursor: pointer;
+        transition: all 0.15s ease;
+        box-shadow: var(--shadow-pop);
+        text-decoration: none;
+        user-select: none;
+    }
+
+    .btn-primary {
+        background: var(--primary-red);
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background: var(--primary-red-hover);
+        transform: translateY(-2px);
+    }
+
+    .btn-primary:active {
+        transform: translateY(4px);
+        box-shadow: 0 2px 0px rgba(0,0,0,0.2);
+    }
+
+    .btn-gold {
+        background: var(--primary-gold);
+        color: #4E342E;
+    }
+
+    .btn-gold:hover {
+        background: var(--primary-gold-dark);
+        transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+        background: var(--secondary-blue);
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background: #357ABD;
+    }
+
+    .btn-outline {
+        background: white;
+        color: var(--text-main);
+        border: 2px solid #CBD5E1;
+    }
+
+    .btn-outline:hover {
+        background: #F8FAFC;
+    }
+
+    .btn-block {
+        width: 100%;
+    }
+
+    /* GRID MENU BERANDA */
+    .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        margin-top: 20px;
+    }
+
+    .menu-card {
+        background: white;
+        border-radius: var(--radius-md);
+        padding: 20px;
+        text-align: center;
+        border: 3px solid #E2E8F0;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    }
+
+    .menu-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--primary-gold);
+        box-shadow: var(--shadow-soft);
+    }
+
+    .menu-card .icon {
+        font-size: 2.8rem;
+        margin-bottom: 8px;
+    }
+
+    .menu-card h3 {
+        font-size: 1.2rem;
+        color: var(--text-main);
+    }
+
+    /* INPUT IDENTITAS */
+    .name-input-box {
+        background: #FFF9C4;
+        padding: 16px;
+        border-radius: var(--radius-md);
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .name-input-box input {
+        padding: 10px 16px;
+        border-radius: var(--radius-sm);
+        border: 2px solid #FBC02D;
+        font-size: 1rem;
+        text-align: center;
+        width: 80%;
+        max-width: 300px;
+        font-weight: 700;
+    }
+
+    /* SLIDE MATERI INTERAKTIF */
+    .slide-progress {
+        height: 12px;
+        background: #E2E8F0;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 15px;
+    }
+
+    .slide-progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, var(--primary-gold), var(--primary-red));
+        width: 10%;
+        transition: width 0.3s ease;
+    }
+
+    .slide-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .slide-badge {
+        background: #E3F2FD;
+        color: #1565C0;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-weight: 800;
+        font-size: 0.85rem;
+    }
+
+    .slide-content h2 {
+        font-size: 1.6rem;
+        color: var(--primary-red);
+        margin-bottom: 12px;
+    }
+
+    .slide-content p, .slide-content li {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        margin-bottom: 10px;
+        color: #374151;
+    }
+
+    .slide-content ul {
+        padding-left: 20px;
+        margin-bottom: 15px;
+    }
+
+    .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    /* SECTION INTERAKTIF SIMBOL PANCASILA */
+    .symbols-interactive-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 12px;
+        margin: 20px 0;
+    }
+
+    .symbol-item {
+        background: #FAFAFA;
+        border: 2px solid #E0E0E0;
+        border-radius: var(--radius-md);
+        padding: 12px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .symbol-item:hover {
+        background: #FFF8E1;
+        border-color: var(--primary-gold);
+        transform: scale(1.05);
+    }
+
+    .symbol-item img {
+        width: 70px;
+        height: 70px;
+        object-fit: contain;
+        margin-bottom: 8px;
+    }
+
+    .symbol-item span {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 800;
+        color: var(--text-main);
+    }
+
+    /* KUIS DISPLAY */
+    .quiz-status {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        background: #F1F5F9;
+        padding: 10px 16px;
+        border-radius: var(--radius-md);
+    }
+
+    .quiz-score-badge {
+        font-size: 1.1rem;
+        font-weight: 900;
+        color: #D97706;
+    }
+
+    .quiz-question-title {
+        font-size: 1.25rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
+
+    .options-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-top: 15px;
+    }
+
+    .option-btn {
+        background: white;
+        border: 2px solid #E2E8F0;
+        padding: 14px 18px;
+        border-radius: var(--radius-md);
+        text-align: left;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-main);
+        cursor: pointer;
+        transition: all 0.15s ease;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .option-btn:hover {
+        border-color: var(--secondary-blue);
+        background: #F0F7FF;
+    }
+
+    .option-prefix {
+        width: 32px;
+        height: 32px;
+        background: #E2E8F0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        font-weight: 800;
+        flex-shrink: 0;
+    }
+
+    /* POPUP MODAL FEEDBACK KUIS */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        padding: 20px;
+        animation: fadeIn 0.2s ease;
+    }
+
+    .modal-overlay.active {
+        display: flex;
+    }
+
+    .modal-content {
+        background: white;
+        border-radius: var(--radius-lg);
+        max-width: 500px;
+        width: 100%;
+        padding: 24px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        position: relative;
+        animation: popUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popUp {
+        from { transform: scale(0.8); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    .feedback-icon {
+        font-size: 3.5rem;
+        margin-bottom: 10px;
+    }
+
+    .feedback-title {
+        font-size: 1.6rem;
+        font-weight: 900;
+        margin-bottom: 8px;
+    }
+
+    .feedback-title.correct { color: var(--secondary-green); }
+    .feedback-title.wrong { color: var(--primary-red); }
+
+    .feedback-text {
+        font-size: 1rem;
+        color: var(--text-main);
+        margin-bottom: 15px;
+        line-height: 1.5;
+        background: #F8FAFC;
+        padding: 12px;
+        border-radius: var(--radius-sm);
+        text-align: left;
+    }
+
+    /* BADGES / PENCAPAIAN */
+    .badges-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+        margin-top: 15px;
+    }
+
+    .badge-card {
+        background: white;
+        border: 2px solid #E2E8F0;
+        border-radius: var(--radius-md);
+        padding: 18px;
+        text-align: center;
+        opacity: 0.5;
+        filter: grayscale(100%);
+        transition: all 0.3s ease;
+    }
+
+    .badge-card.unlocked {
+        opacity: 1;
+        filter: grayscale(0%);
+        border-color: var(--primary-gold);
+        background: #FFFDF0;
+        box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2);
+    }
+
+    .badge-card .badge-icon {
+        font-size: 3rem;
+        margin-bottom: 8px;
+    }
+
+    .badge-card h4 {
+        font-size: 1.1rem;
+        margin-bottom: 4px;
+    }
+
+    .badge-card p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+    }
+
+    /* SKOR HASIL AKHIR */
+    .result-box {
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .result-score {
+        font-size: 3.5rem;
+        font-weight: 900;
+        color: var(--primary-red);
+        margin: 10px 0;
+    }
+
+    /* CANVAS CONFETTI */
+    #confetti-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 9999;
+    }
+
+    /* FOOTER KREDIT */
+    footer {
+        text-align: center;
+        padding: 15px;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-top: auto;
+    }
+
+    /* RESPONSIVE DESIGN FOR HP & TABLET */
+    @media (max-width: 600px) {
+        header {
+            padding: 10px 15px;
+        }
+
+        .brand-logo h1 {
+            font-size: 1.1rem;
+        }
+
+        .card {
+            padding: 18px;
+        }
+
+        .slide-content h2 {
+            font-size: 1.3rem;
+        }
+
+        .quiz-question-title {
+            font-size: 1.1rem;
+        }
+
+        .nav-buttons {
+            flex-direction: column;
+        }
+
+        .btn {
+            width: 100%;
+        }
+    }
+</style>
+
+
+<!-- CANVAS EFEK CONFETTI SAAT JAWABAN BENAR -->
+<canvas id="confetti-canvas"></canvas>
+
+<!-- HEADER APLIKASI -->
+<header>
+    <div class="brand-logo" onclick="showScreen('home-screen')">
+        🦅 <h1>GARUDA PANCASILA</h1>
+        <span>EDUKASI SD</span>
+    </div>
+    <div class="nav-controls">
+        <div id="user-greeting" class="user-greeting">Halo, Teman! 👋</div>
+        <button id="sound-toggle" class="btn-icon" aria-label="Aktifkan/Matikan Suara" title="Aktifkan/Matikan Suara">🔊</button>
+    </div>
+</header>
+
+<!-- AREA UTAMA APLIKASI METODE SINGLE PAGE -->
+<main>
+
+    <!-- 1. HALAMAN BERANDA -->
+    <section id="home-screen" class="screen active">
+        <div class="card" style="text-align: center;">
+            <h1 style="color: var(--primary-red); font-size: 2rem; margin-bottom: 5px;">🦅 GARUDA PANCASILA</h1>
+            <p style="font-size: 1.1rem; color: var(--text-muted); font-weight: 700;">Belajar Pancasila Jadi Lebih Seru!</p>
+
+            <!-- GAMBAR UTAMA GARUDA PANCASILA -->
+            <div class="img-container">
+                <img id="main-garuda-img" src="https://upload.wikimedia.org/wikipedia/commons/9/90/National_emblem_of_Indonesia_%E2%80%93_Garuda_Pancasila.svg" alt="Lambang negara Garuda Pancasila" onerror="handleImageError(this, 'Garuda Pancasila - Lambang Negara Republik Indonesia')">
+                <div class="img-fallback">🦅 Garuda Pancasila - Lambang Negara RI</div>
+                <div class="img-caption">Garuda Pancasila adalah Lambang Negara Republik Indonesia</div>
+                <div class="img-credit">Sumber: Wikimedia Commons (Domain Publik / Gambar Resmi)</div>
+            </div>
+
+            <!-- INPUT NAMA SISWA -->
+            <div class="name-input-box">
+                <label for="student-name" style="font-weight: 800; color: #5D4037;">Ketik Nama Kamu di Sini:</label>
+                <input type="text" id="student-name" placeholder="Nama Siswa..." maxlength="20">
+            </div>
+
+            <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 12px; align-items: center;">
+                <button class="btn btn-primary btn-block" style="max-width: 350px; font-size: 1.25rem;" onclick="startLearningModeChoice()">🚀 MULAI BELAJAR</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. HALAMAN PILIH MODE (BELAJAR DULU / LANGSUNG KUIS) -->
+    <section id="mode-select-screen" class="screen">
+        <div class="card" style="text-align: center;">
+            <h2>Pilih Kegiatan Kamu! 🎯</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Kamu mau membaca materi dulu atau langsung menguji kehebatanmu lewat kuis?</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+                <div class="menu-card" onclick="openMateri(0)">
+                    <div class="icon">📖</div>
+                    <h3>Belajar Dulu</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 6px;">Pelajari materi interaktif 10 slide secara lengkap.</p>
+                </div>
+                <div class="menu-card" onclick="startQuizSession()">
+                    <div class="icon">🎮</div>
+                    <h3>Langsung Kuis</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 6px;">Jawab 10 soal acak dan kumpulkan poin!</p>
+                </div>
+            </div>
+            <div style="margin-top: 20px;">
+                <button class="btn btn-outline" onclick="showScreen('home-screen')">⬅️ Kembali ke Beranda</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. MENU UTAMA PEMBELAJARAN -->
+    <section id="menu-screen" class="screen">
+        <div class="card">
+            <h2 style="text-align: center; margin-bottom: 20px;">Menu Pembelajaran 🌟</h2>
+            <div class="menu-grid">
+                <div class="menu-card" onclick="openMateri(0)">
+                    <div class="icon">📖</div>
+                    <h3>Materi</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">10 Slide Materi Interaktif</p>
+                </div>
+                <div class="menu-card" onclick="startQuizSession()">
+                    <div class="icon">🎮</div>
+                    <h3>Kuis</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Latihan Soal 10 Sesi</p>
+                </div>
+                <div class="menu-card" onclick="showScreen('badges-screen')">
+                    <div class="icon">🏆</div>
+                    <h3>Pencapaian</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Lihat Koleksi Badge</p>
+                </div>
+                <div class="menu-card" onclick="showScreen('about-screen')">
+                    <div class="icon">📚</div>
+                    <h3>Tentang</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Petunjuk & Informasi</p>
+                </div>
+            </div>
+            <div style="margin-top: 20px; text-align: center;">
+                <button class="btn btn-outline" onclick="showScreen('home-screen')">🏠 Beranda</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. HALAMAN MATERI INTERAKTIF (SLIDES) -->
+    <section id="materi-screen" class="screen">
+        <div class="card">
+            <div class="slide-progress">
+                <div id="materi-progress-bar" class="slide-progress-bar"></div>
+            </div>
+            <div class="slide-header">
+                <span id="materi-step-indicator" class="slide-badge">Materi 1 dari 10</span>
+                <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.85rem;" onclick="showScreen('menu-screen')">✖️ Tutup Materi</button>
+            </div>
+
+            <div id="materi-slide-container" class="slide-content">
+                <!-- Dynamic Slide Injection -->
+            </div>
+
+            <!-- DYNAMIC SYMBOL EXPLORER (KHUSUS PADA SLIDE SIMBOL) -->
+            <div id="symbols-explorer-box" style="display: none;">
+                <h3 style="margin-top: 15px; font-size: 1.1rem; text-align: center;">Klik Simbol untuk Melihat Detailnya:</h3>
+                <div class="symbols-interactive-grid">
+                    <div class="symbol-item" onclick="showSymbolDetail(1)">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Pancasila_1st_Sila.svg" alt="Simbol Bintang" onerror="handleImageError(this, 'Bintang')">
+                        <span>1. Bintang</span>
+                    </div>
+                    <div class="symbol-item" onclick="showSymbolDetail(2)">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Pancasila_2nd_Sila.svg" alt="Simbol Rantai" onerror="handleImageError(this, 'Rantai')">
+                        <span>2. Rantai</span>
+                    </div>
+                    <div class="symbol-item" onclick="showSymbolDetail(3)">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Pancasila_3rd_Sila.svg" alt="Simbol Pohon Beringin" onerror="handleImageError(this, 'Pohon Beringin')">
+                        <span>3. Pohon Beringin</span>
+                    </div>
+                    <div class="symbol-item" onclick="showSymbolDetail(4)">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Pancasila_4th_Sila.svg" alt="Simbol Kepala Banteng" onerror="handleImageError(this, 'Kepala Banteng')">
+                        <span>4. Kepala Banteng</span>
+                    </div>
+                    <div class="symbol-item" onclick="showSymbolDetail(5)">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Pancasila_5th_Sila.svg" alt="Simbol Padi dan Kapas" onerror="handleImageError(this, 'Padi dan Kapas')">
+                        <span>5. Padi & Kapas</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button id="btn-prev-materi" class="btn btn-outline" onclick="prevMateri()">⬅️ Sebelumnya</button>
+                <button id="btn-next-materi" class="btn btn-primary" onclick="nextMateri()">Berikutnya ➡️</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. HALAMAN KUIS -->
+    <section id="quiz-screen" class="screen">
+        <div class="card">
+            <div class="quiz-status">
+                <span id="quiz-question-number" style="font-weight: 800;">Soal 1 / 10</span>
+                <span id="quiz-score-display" class="quiz-score-badge">⭐ Skor: 0</span>
+            </div>
+            <div class="slide-progress" style="margin-bottom: 20px;">
+                <div id="quiz-progress-bar" class="slide-progress-bar" style="width: 10%;"></div>
+            </div>
+
+            <!-- GAMBAR DUKUNGAN SOAL (JIKA ADA) -->
+            <div id="quiz-image-box" class="img-container" style="display: none;">
+                <img id="quiz-img" src="" alt="" onerror="handleImageError(this, 'Gambar Soal')">
+                <div class="img-caption" id="quiz-img-caption"></div>
+                <div class="img-credit" id="quiz-img-credit">Sumber: Wikimedia Commons</div>
+            </div>
+
+            <div id="quiz-question-text" class="quiz-question-title">
+                Pertanyaan kuis akan ditampilkan di sini...
+            </div>
+
+            <div id="quiz-options-container" class="options-grid">
+                <!-- Dynamic Options -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. HALAMAN HASIL KUIS -->
+    <section id="quiz-result-screen" class="screen">
+        <div class="card result-box">
+            <h1 style="color: var(--text-main);">🎉 KUIS SELESAI!</h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem; margin-top: 5px;">Hasil Perjuangan Kamu:</p>
+
+            <div id="result-score-val" class="result-score">0 / 100</div>
+
+            <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; font-weight: 800;">
+                <span style="color: var(--secondary-green);" id="result-correct-count">✅ Benar: 0</span>
+                <span style="color: var(--primary-red);" id="result-wrong-count">❌ Salah: 0</span>
+            </div>
+
+            <div id="result-badge-msg" style="background: #FFF8E7; padding: 16px; border-radius: var(--radius-md); margin-bottom: 20px; border: 2px solid var(--primary-gold);">
+                <h3 id="result-title-msg">HEBAT!</h3>
+                <p id="result-desc-msg">Kamu telah berusaha dengan baik!</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;">
+                <button class="btn btn-gold" onclick="startQuizSession()">🔄 Ulangi Sesi</button>
+                <button class="btn btn-primary" onclick="startQuizSession()">🎲 Sesi Berikutnya</button>
+                <button class="btn btn-secondary" onclick="openMateri(0)">📖 Pelajari Materi Lagi</button>
+                <button class="btn btn-outline" onclick="showScreen('home-screen')">🏠 Beranda</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. HALAMAN PENCAPAIAN (BADGES) -->
+    <section id="badges-screen" class="screen">
+        <div class="card">
+            <h2 style="text-align: center; margin-bottom: 10px;">🏆 Pencapaian Kamu</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 20px;">Selesaikan latihan kuis dan pelajari materi untuk mengumpulkan seluruh badge!</p>
+
+            <div class="badges-grid" id="badges-container">
+                <!-- Dynamic Badges -->
+            </div>
+
+            <div style="margin-top: 25px; text-align: center;">
+                <button class="btn btn-outline" onclick="showScreen('menu-screen')">⬅️ Kembali ke Menu</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. HALAMAN TENTANG -->
+    <section id="about-screen" class="screen">
+        <div class="card">
+            <h2>📚 Tentang Media Pembelajaran</h2>
+            <p style="margin: 10px 0; line-height: 1.6;">Aplikasi web interaktif ini dirancang khusus sebagai media pembelajaran siswa Sekolah Dasar kelas rendah maupun tinggi dalam memahami <strong>Lambang Negara Garuda Pancasila</strong>.</p>
+            
+            <h3 style="margin-top: 15px; color: var(--primary-red);">Tujuan Pembelajaran:</h3>
+            <ul style="padding-left: 20px; line-height: 1.8;">
+                <li>Menjelaskan pengertian Garuda Pancasila.</li>
+                <li>Mengetahui sejarah singkat perancangan lambang negara.</li>
+                <li>Mengenali bagian-bagian Garuda Pancasila dan makna jumlah bulunya.</li>
+                <li>Menjelaskan makna simbol-simbol perisai Pancasila.</li>
+                <li>Menjelaskan arti semboyan Bhinneka Tunggal Ika.</li>
+                <li>Mencontohkan penerapan nilai Pancasila dalam kehidupan sehari-hari.</li>
+            </ul>
+
+            <div style="margin-top: 25px; text-align: center;">
+                <button class="btn btn-primary" onclick="showScreen('menu-screen')">⬅️ Kembali ke Menu</button>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- POPUP MODAL DETAIL SIMBOL PANCASILA -->
+<div id="symbol-modal" class="modal-overlay">
+    <div class="modal-content">
+        <span style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer;" onclick="closeModal('symbol-modal')">✖️</span>
+        <img id="modal-symbol-img" src="" alt="Simbol" style="width: 90px; height: 90px; object-fit: contain; margin-bottom: 10px;" onerror="handleImageError(this, 'Simbol Pancasila')">
+        <h2 id="modal-symbol-title" style="color: var(--primary-red); margin-bottom: 4px;">Sila Ke-1</h2>
+        <h4 id="modal-symbol-name" style="color: var(--primary-gold-dark); margin-bottom: 12px;">Simbol Bintang</h4>
+        
+        <div class="feedback-text">
+            <p id="modal-symbol-text">Deskripsi makna simbol...</p>
+            <div style="margin-top: 10px; font-weight: 700; color: #2E7D32;" id="modal-symbol-example">Contoh: ...</div>
+        </div>
+        
+        <div class="img-credit" id="modal-symbol-credit">Sumber: Wikimedia Commons</div>
+        <button class="btn btn-primary" style="margin-top: 15px; width: 100%;" onclick="closeModal('symbol-modal')">Tutup</button>
+    </div>
+</div>
+
+<!-- POPUP MODAL FEEDBACK JAWABAN KUIS -->
+<div id="quiz-feedback-modal" class="modal-overlay">
+    <div class="modal-content">
+        <div id="feedback-icon" class="feedback-icon">🎉</div>
+        <div id="feedback-title" class="feedback-title correct">BENAR!</div>
+        <div id="feedback-text" class="feedback-text">Penjelasan jawaban akan tampil di sini...</div>
+        <button id="btn-next-question" class="btn btn-primary btn-block" onclick="nextQuestion()">➡️ LANJUT KE SOAL BERIKUTNYA</button>
+    </div>
+</div>
+
+<!-- FOOTER KREDIT -->
+<footer>
+    Media Pembelajaran Interaktif SD &copy; 2026 - Lambang Negara Garuda Pancasila
+</footer>
+
+<!-- ==========================================
+   2. LOGIKA APLIKASI (JAVASCRIPT VANILLA)
+   ========================================== -->
+<script>
+    /* --------------------------------------------------
+       A. DATA GAMBAR UTAMA & SIMBOL
+       -------------------------------------------------- */
+    const IMAGES = {
+        garuda: {
+            url: "https://upload.wikimedia.org/wikipedia/commons/9/90/National_emblem_of_Indonesia_%E2%80%93_Garuda_Pancasila.svg",
+            alt: "Lambang negara Garuda Pancasila",
+            caption: "Garuda Pancasila: Lambang Negara Republik Indonesia",
+            credit: "Sumber: Wikimedia Commons (Domain Publik)"
+        },
+        bintang: {
+            url: "https://upload.wikimedia.org/wikipedia/commons/1/18/Pancasila_1st_Sila.svg",
+            alt: "Simbol Bintang Sila Ke-1",
+            caption: "Simbol Bintang - Ketuhanan Yang Maha Esa",
+            credit: "Sumber: Wikimedia Commons"
+        },
+        rantai: {
+            url: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Pancasila_2nd_Sila.svg",
+            alt: "Simbol Rantai Sila Ke-2",
+            caption: "Simbol Rantai - Kemanusiaan yang Adil dan Beradab",
+            credit: "Sumber: Wikimedia Commons"
+        },
+        pohon: {
+            url: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Pancasila_3rd_Sila.svg",
+            alt: "Simbol Pohon Beringin Sila Ke-3",
+            caption: "Simbol Pohon Beringin - Persatuan Indonesia",
+            credit: "Sumber: Wikimedia Commons"
+        },
+        banteng: {
+            url: "https://upload.wikimedia.org/wikipedia/commons/1/18/Pancasila_4th_Sila.svg",
+            alt: "Simbol Kepala Banteng Sila Ke-4",
+            caption: "Simbol Kepala Banteng - Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan",
+            credit: "Sumber: Wikimedia Commons"
+        },
+        padiKapas: {
+            url: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Pancasila_5th_Sila.svg",
+            alt: "Simbol Padi dan Kapas Sila Ke-5",
+            caption: "Simbol Padi dan Kapas - Keadilan Sosial bagi Seluruh Rakyat Indonesia",
+            credit: "Sumber: Wikimedia Commons"
+        }
+    };
+
+    /* --------------------------------------------------
+       B. DATA MATERI (10 SLIDE)
+       -------------------------------------------------- */
+    const MATERI_SLIDES = [
+        {
+            title: "1. Pengertian Garuda Pancasila",
+            content: `
+                <p><strong>Garuda Pancasila</strong> adalah lambang negara Republik Indonesia. Garuda Pancasila menggambarkan jati diri bangsa Indonesia serta mengandung nilai-nilai yang terdapat dalam Pancasila.</p>
+                <p>Lambang negara ini berbentuk burung Garuda yang membawa perisai di bagian dada dan pita bertuliskan <strong>“Bhinneka Tunggal Ika”</strong> pada bagian kakinya.</p>
+                <div class="img-container">
+                    <img src="${IMAGES.garuda.url}" alt="${IMAGES.garuda.alt}" onerror="handleImageError(this, 'Garuda Pancasila')">
+                    <div class="img-caption">${IMAGES.garuda.caption}</div>
+                    <div class="img-credit">${IMAGES.garuda.credit}</div>
+                </div>
+            `
+        },
+        {
+            title: "2. Sejarah Singkat Garuda Pancasila",
+            content: `
+                <p>Garuda Pancasila dirancang setelah Indonesia merdeka sebagai lambang negara.</p>
+                <p>Rancangan lambang negara dikembangkan oleh <strong>Sultan Hamid II</strong>, kemudian disempurnakan bersama para tokoh negara, termasuk <strong>Soekarno</strong>.</p>
+                <p>Garuda Pancasila ditetapkan sebagai lambang negara Indonesia pada <strong>tahun 1950</strong>. Bentuk dan penggunaannya kemudian diatur dalam peraturan perundang-undangan Republik Indonesia.</p>
+            `
+        },
+        {
+            title: "3. Burung Garuda",
+            content: `
+                <p>Burung Garuda melambangkan <strong>kekuatan dan kebesaran</strong> bangsa Indonesia.</p>
+                <p>Warna emas pada burung Garuda menggambarkan kemegahan dan kejayaan bangsa Indonesia yang selalu berjuang untuk kemajuan.</p>
+                <div class="img-container">
+                    <img src="${IMAGES.garuda.url}" alt="${IMAGES.garuda.alt}" onerror="handleImageError(this, 'Burung Garuda')">
+                    <div class="img-caption">Burung Garuda Melambangkan Kekuatan dan Kebesaran</div>
+                    <div class="img-credit">${IMAGES.garuda.credit}</div>
+                </div>
+            `
+        },
+        {
+            title: "4. Makna Jumlah Bulu Garuda",
+            content: `
+                <p>Jumlah bulu pada Garuda memiliki makna yang berkaitan langsung dengan tanggal kemerdekaan Indonesia (17-8-1945):</p>
+                <ul>
+                    <li><strong>17 bulu</strong> pada masing-masing sayap → Tanggal 17</li>
+                    <li><strong>8 bulu</strong> pada ekor → Bulan 8 (Agustus)</li>
+                    <li><strong>19 bulu</strong> pada bagian bawah perisai/pangkal ekor → Tahun 19</li>
+                    <li><strong>45 bulu</strong> pada leher → Tahun 45</li>
+                </ul>
+                <p>Jika digabungkan, jumlah bulu tersebut melambangkan hari Proklamasi Kemerdekaan Indonesia: <strong>17 Agustus 1945</strong>.</p>
+            `
+        },
+        {
+            title: "5. Perisai Pancasila",
+            content: `
+                <p>Perisai yang berada di dada Garuda berisi <strong>lima simbol</strong> yang mewakili lima sila Pancasila.</p>
+                <p>Perisai melambangkan perjuangan, pertahanan, dan perlindungan diri untuk mencapai tujuan bangsa Indonesia.</p>
+                <div class="img-container">
+                    <img src="${IMAGES.garuda.url}" alt="Perisai Garuda" onerror="handleImageError(this, 'Perisai Garuda')">
+                    <div class="img-caption">Perisai Dada Garuda Memuat 5 Simbol Sila Pancasila</div>
+                    <div class="img-credit">${IMAGES.garuda.credit}</div>
+                </div>
+            `
+        },
+        {
+            title: "6. Lima Simbol Pancasila",
+            content: `
+                <p>Klik masing-masing gambar simbol di bawah ini untuk mempelajari nama, sila, dan maknanya!</p>
+            `,
+            showSymbolsInteractive: true
+        },
+        {
+            title: "7. Garis Hitam di Tengah Perisai",
+            content: `
+                <p>Jika kamu memperhatikan perisai Garuda, ada satu <strong>garis hitam tebal</strong> yang melintang horizontal di tengah-tengah perisai.</p>
+                <p>Garis hitam tebal ini melambangkan <strong>garis khatulistiwa</strong>, yaitu garis lintang bumi yang melewati wilayah kepulauan Indonesia.</p>
+            `
+        },
+        {
+            title: "8. Pita 'Bhinneka Tunggal Ika'",
+            content: `
+                <p>Pada bagian kaki Garuda, terdapat pita putih yang dicengkeram erat bertuliskan semboyan negara:</p>
+                <h3 style="text-align: center; color: var(--primary-red); margin: 10px 0;">“Bhinneka Tunggal Ika”</h3>
+                <p>Artinya adalah: <strong>“Berbeda-beda tetapi tetap satu.”</strong></p>
+                <p>Semboyan ini menggambarkan keberagaman Indonesia, seperti suku, agama, bahasa, budaya, dan adat istiadat, yang tetap bersatu sebagai bangsa Indonesia.</p>
+            `
+        },
+        {
+            title: "9. Contoh Sikap Penerapan Nilai Pancasila",
+            content: `
+                <p>Sebagai pelajar, kamu dapat menerapkan nilai-nilai Garuda Pancasila dengan cara:</p>
+                <ul>
+                    <li>Menghormati teman yang berbeda agama.</li>
+                    <li>Menolong orang yang membutuhkan.</li>
+                    <li>Tidak membeda-bedakan teman berdasarkan suku atau daerah asal.</li>
+                    <li>Menyelesaikan masalah melalui musyawarah.</li>
+                    <li>Bersikap adil kepada semua orang.</li>
+                    <li>Menjaga persatuan dan kerukunan.</li>
+                    <li>Bangga menggunakan bahasa Indonesia dan melestarikan budaya bangsa.</li>
+                </ul>
+            `
+        },
+        {
+            title: "10. Kesimpulan Makna Garuda Pancasila",
+            content: `
+                <p>Secara keseluruhan, Garuda Pancasila memiliki makna bahwa bangsa Indonesia adalah bangsa yang:</p>
+                <ul>
+                    <li>Percaya kepada Tuhan Yang Maha Esa.</li>
+                    <li>Menghargai dan menjunjung tinggi kemanusiaan.</li>
+                    <li>Menjaga persatuan dan kesatuan.</li>
+                    <li>Mengutamakan musyawarah dalam mengambil keputusan.</li>
+                    <li>Berusaha mewujudkan keadilan dan kesejahteraan bagi seluruh rakyat.</li>
+                </ul>
+                <p style="text-align: center; margin-top: 15px; font-weight: 800; color: var(--secondary-green);">Selamat! Kamu telah mempelajari seluruh materi. Yuk, uji kemampuanmu di Kuis!</p>
+            `
+        }
+    ];
+
+    /* --------------------------------------------------
+       C. BANK SOAL KUIS (TEPAT 50 SOAL LENGKAP)
+       -------------------------------------------------- */
+    const QUIZ_BANK = [
+        {
+            id: 1,
+            type: "multiple-choice",
+            question: "Garuda Pancasila adalah ... Republik Indonesia.",
+            image: null,
+            options: ["Lambang negara", "Bendera negara", "Lagu kenboolean", "Ibu kota"],
+            answer: "Lambang negara",
+            explanation: "Garuda Pancasila adalah lambang negara Republik Indonesia yang menggambarkan jati diri bangsa."
+        },
+        {
+            id: 2,
+            type: "multiple-choice",
+            question: "Semboyan yang tertulis pada pita yang dicengkeram oleh kaki Garuda Pancasila adalah ...",
+            image: null,
+            options: ["Bhinneka Tunggal Ika", "Tut Wuri Handayani", "Pancasila Sakti", "Indonesia Raya"],
+            answer: "Bhinneka Tunggal Ika",
+            explanation: "Pada bagian kaki Garuda terdapat pita bertuliskan “Bhinneka Tunggal Ika”."
+        },
+        {
+            id: 3,
+            type: "multiple-choice",
+            question: "Rancangan awal lambang negara Garuda Pancasila dikembangkan oleh ...",
+            image: null,
+            options: ["Sultan Hamid II", "Ki Hajar Dewantara", "Mohammad Hatta", "Jenderal Sudirman"],
+            answer: "Sultan Hamid II",
+            explanation: "Rancangan lambang negara dikembangkan oleh Sultan Hamid II, kemudian disempurnakan bersama para tokoh negara."
+        },
+        {
+            id: 4,
+            type: "multiple-choice",
+            question: "Tokoh negara yang menyempurnakan rancangan lambang negara bersama Sultan Hamid II di antaranya adalah ...",
+            image: null,
+            options: ["Soekarno", "Pangeran Diponegoro", "R.A. Kartini", "Sutan Sjahrir"],
+            answer: "Soekarno",
+            explanation: "Sultan Hamid II mengembangkan rancangan lambang negara, kemudian disempurnakan bersama para tokoh negara, termasuk Soekarno."
+        },
+        {
+            id: 5,
+            type: "multiple-choice",
+            question: "Tahun berapakah Garuda Pancasila ditetapkan sebagai lambang negara Indonesia?",
+            image: null,
+            options: ["1950", "1945", "1928", "1960"],
+            answer: "1950",
+            explanation: "Garuda Pancasila ditetapkan sebagai lambang negara Indonesia pada tahun 1950."
+        },
+        {
+            id: 6,
+            type: "multiple-choice",
+            question: "Burung Garuda pada lambang negara melambangkan ...",
+            image: null,
+            options: ["Kekuatan dan kebesaran bangsa", "Kekayaan alam", "Keindahan flora", "Kelerangan laut"],
+            answer: "Kekuatan dan kebesaran bangsa",
+            explanation: "Burung Garuda melambangkan kekuatan dan kebesaran bangsa Indonesia."
+        },
+        {
+            id: 7,
+            type: "multiple-choice",
+            question: "Jumlah bulu pada masing-masing sayap Garuda Pancasila melambangkan tanggal kemerdekaan, yaitu berjumlah ...",
+            image: null,
+            options: ["17 bulu", "8 bulu", "19 bulu", "45 bulu"],
+            answer: "17 bulu",
+            explanation: "17 bulu pada masing-masing sayap melambangkan tanggal 17 Proklamasi Kemerdekaan."
+        },
+        {
+            id: 8,
+            type: "multiple-choice",
+            question: "Jumlah bulu pada ekor Garuda Pancasila berjumlah ...",
+            image: null,
+            options: ["8 bulu", "17 bulu", "19 bulu", "45 bulu"],
+            answer: "8 bulu",
+            explanation: "8 bulu pada ekor melambangkan bulan 8 (Agustus)."
+        },
+        {
+            id: 9,
+            type: "multiple-choice",
+            question: "Jumlah bulu pada bagian bawah perisai atau pangkal ekor melambangkan angka ...",
+            image: null,
+            options: ["19", "45", "17", "8"],
+            answer: "19",
+            explanation: "19 bulu pada bagian bawah perisai atau pangkal ekor melambangkan tahun 19."
+        },
+        {
+            id: 10,
+            type: "multiple-choice",
+            question: "Berapakah jumlah bulu pada leher Garuda Pancasila?",
+            image: null,
+            options: ["45 bulu", "17 bulu", "8 bulu", "19 bulu"],
+            answer: "45 bulu",
+            explanation: "45 bulu pada leher melambangkan tahun 45 dari tahun kemerdekaan 1945."
+        },
+        {
+            id: 11,
+            type: "multiple-choice",
+            question: "Jika seluruh jumlah bulu Garuda digabungkan, maka melambangkan tanggal sejarah penting yaitu ...",
+            image: null,
+            options: ["17-8-1945", "28-10-1928", "10-11-1945", "1-6-1945"],
+            answer: "17-8-1945",
+            explanation: "Jumlah bulu melambangkan 17-8-1945, yaitu tanggal Proklamasi Kemerdekaan Indonesia."
+        },
+        {
+            id: 12,
+            type: "guess-symbol",
+            question: "Simbol pada perisai yang melambangkan sila pertama Pancasila (Ketuhanan Yang Maha Esa) adalah ...",
+            image: IMAGES.bintang.url,
+            options: ["Bintang", "Rantai", "Pohon Beringin", "Kepala Banteng"],
+            answer: "Bintang",
+            explanation: "Bintang melambangkan sila pertama: Ketuhanan Yang Maha Esa."
+        },
+        {
+            id: 13,
+            type: "guess-symbol",
+            question: "Simbol pada perisai yang melambangkan sila kedua Pancasila adalah ...",
+            image: IMAGES.rantai.url,
+            options: ["Rantai", "Bintang", "Pohon Beringin", "Padi dan Kapas"],
+            answer: "Rantai",
+            explanation: "Rantai melambangkan sila kedua: Kemanusiaan yang Adil dan Beradab."
+        },
+        {
+            id: 14,
+            type: "guess-symbol",
+            question: "Simbol pada perisai yang melambangkan sila ketiga Pancasila adalah ...",
+            image: IMAGES.pohon.url,
+            options: ["Pohon Beringin", "Kepala Banteng", "Rantai", "Bintang"],
+            answer: "Pohon Beringin",
+            explanation: "Pohon Beringin melambangkan sila ketiga: Persatuan Indonesia."
+        },
+        {
+            id: 15,
+            type: "guess-symbol",
+            question: "Simbol perisai yang melambangkan sila keempat Pancasila adalah ...",
+            image: IMAGES.banteng.url,
+            options: ["Kepala Banteng", "Padi dan Kapas", "Bintang", "Rantai"],
+            answer: "Kepala Banteng",
+            explanation: "Kepala Banteng melambangkan sila keempat: Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan."
+        },
+        {
+            id: 16,
+            type: "guess-symbol",
+            question: "Simbol perisai yang melambangkan sila kelima Pancasila adalah ...",
+            image: IMAGES.padiKapas.url,
+            options: ["Padi dan Kapas", "Pohon Beringin", "Kepala Banteng", "Rantai"],
+            answer: "Padi dan Kapas",
+            explanation: "Padi dan Kapas melambangkan sila kelima: Keadilan Sosial bagi Seluruh Rakyat Indonesia."
+        },
+        {
+            id: 17,
+            type: "multiple-choice",
+            question: "Simbol Bintang pada perisai Garuda Pancasila menggambarkan ...",
+            image: null,
+            options: ["Cahaya dan kepercayaan kepada Tuhan Yang Maha Esa", "Kebutuhan pangan dan sandang", "Tempat berlindung masyarakat", "Hubungan persahabatan antarnegara"],
+            answer: "Cahaya dan kepercayaan kepada Tuhan Yang Maha Esa",
+            explanation: "Bintang menggambarkan cahaya dan kepercayaan kepada Tuhan Yang Maha Esa."
+        },
+        {
+            id: 18,
+            type: "multiple-choice",
+            question: "Simbol Rantai pada sila kedua menggambarkan ...",
+            image: null,
+            options: ["Hubungan antarmanusia yang saling membutuhkan dan menghargai", "Kekuatan militer bangsa", "Kehidupan hewan liar", "Perdagangan antar pulau"],
+            answer: "Hubungan antarmanusia yang saling membutuhkan dan menghargai",
+            explanation: "Rantai menggambarkan hubungan antarmanusia yang saling membutuhkan dan menghargai."
+        },
+        {
+            id: 19,
+            type: "multiple-choice",
+            question: "Pohon Beringin pada sila ketiga menggambarkan ...",
+            image: null,
+            options: ["Tempat berlindung dan persatuan masyarakat Indonesia yang beragam", "Hasil hutan Indonesia", "Pentingnya menanam pohon", "Kekuatan batang kayu"],
+            answer: "Tempat berlindung dan persatuan masyarakat Indonesia yang beragam",
+            explanation: "Pohon beringin menggambarkan tempat berlindung dan persatuan masyarakat Indonesia yang beragam."
+        },
+        {
+            id: 20,
+            type: "multiple-choice",
+            question: "Kepala Banteng menggambarkan kehidupan bermasyarakat dan pentingnya ...",
+            image: null,
+            options: ["Musyawarah", "Olahraga", "Perdagangan", "Kerja sendiri"],
+            answer: "Musyawarah",
+            explanation: "Banteng menggambarkan kehidupan bermasyarakat dan pentingnya musyawarah."
+        },
+        {
+            id: 21,
+            type: "multiple-choice",
+            question: "Padi dan Kapas pada sila kelima menggambarkan ...",
+            image: null,
+            options: ["Kebutuhan dasar dan kesejahteraan rakyat", "Keindahan tanaman hias", "Kekuatan industri tekstil", "Kemajuan pertanian modern"],
+            answer: "Kebutuhan dasar dan kesejahteraan rakyat",
+            explanation: "Padi dan kapas menggambarkan kebutuhan dasar dan kesejahteraan rakyat."
+        },
+        {
+            id: 22,
+            type: "multiple-choice",
+            question: "Garis hitam tebal yang melintang di tengah perisai Garuda melambangkan ...",
+            image: null,
+            options: ["Garis khatulistiwa", "Garis pantai", "Batas wilayah laut", "Garis khatulistiwa timur"],
+            answer: "Garis khatulistiwa",
+            explanation: "Garis hitam yang melintang di tengah perisai melambangkan garis khatulistiwa yang melewati wilayah Indonesia."
+        },
+        {
+            id: 23,
+            type: "multiple-choice",
+            question: "Apakah arti dari semboyan 'Bhinneka Tunggal Ika'?",
+            image: null,
+            options: ["Berbeda-beda tetapi tetap satu", "Bersatu kita teguh bercerai kita runtuh", "Majulah terus pantang mundur", "Berbeda-beda tetapi tetap sama"],
+            answer: "Berbeda-beda tetapi tetap satu",
+            explanation: "Bhinneka Tunggal Ika artinya adalah 'Berbeda-beda tetapi tetap satu'."
+        },
+        {
+            id: 24,
+            type: "multiple-choice",
+            question: "Semboyan Bhinneka Tunggal Ika menggambarkan keberagaman Indonesia, seperti ...",
+            image: null,
+            options: ["Suku, agama, bahasa, budaya, dan adat istiadat", "Jenis kendaraan dan rumah", "Tinggi badan dan berat badan", "Pekerjaan orang tua"],
+            answer: "Suku, agama, bahasa, budaya, dan adat istiadat",
+            explanation: "Semboyan ini menggambarkan keberagaman Indonesia, seperti suku, agama, bahasa, budaya, dan adat istiadat."
+        },
+        {
+            id: 25,
+            type: "situation",
+            question: "Rani memiliki teman sekolah yang berbeda agama. Sikap Rani yang sesuai dengan nilai Pancasila adalah ...",
+            image: null,
+            options: ["Menghormati teman yang berbeda agama", "Menjauhi teman tersebut", "Memaksa teman ikutan agamanya", "Mengejek cara beribadahnya"],
+            answer: "Menghormati teman yang berbeda agama",
+            explanation: "Contoh penerapan nilai Pancasila adalah menghormati teman yang berbeda agama."
+        },
+        {
+            id: 26,
+            type: "situation",
+            question: "Ketika melihat ada kawan yang membutuhkan bantuan di sekolah, sikap kita sebaiknya ...",
+            image: null,
+            options: ["Menolong orang yang membutuhkan", "Mengejeknya", "Acuh tak acuh", "Pura-pura tidak lihat"],
+            answer: "Menolong orang yang membutuhkan",
+            explanation: "Menolong orang yang membutuhkan merupakan contoh penerapan nilai Pancasila."
+        },
+        {
+            id: 27,
+            type: "situation",
+            question: "Ahmad berteman dengan siswa yang berasal dari luar daerah. Sikap Ahmad sebaiknya ...",
+            image: null,
+            options: ["Tidak membeda-bedakan teman berdasarkan suku atau daerah asal", "Hanya mau berteman dengan kawan satu daerah", "Mengejek logat bicaranya", "Jarang menyapanya"],
+            answer: "Tidak membeda-bedakan teman berdasarkan suku atau daerah asal",
+            explanation: "Kita tidak boleh membeda-bedakan teman berdasarkan suku atau daerah asal."
+        },
+        {
+            id: 28,
+            type: "situation",
+            question: "Saat ada perbedaan pendapat dalam memilih ketua kelas, masalah sebaiknya diselesaikan melalui ...",
+            image: null,
+            options: ["Musyawarah", "Pertengkaran", "Pertandingan fisik", "Keputusan sendiri"],
+            answer: "Musyawarah",
+            explanation: "Menyelesaikan masalah melalui musyawarah adalah penerapann nilai sila keempat Pancasila."
+        },
+        {
+            id: 29,
+            type: "situation",
+            question: "Ketika membagikan tugas kelompok kepada teman-teman, kita harus ...",
+            image: null,
+            options: ["Bersikap adil kepada semua orang", "Memberi tugas berat pada teman yang dibenci", "Mengerjakan sendiri", "Memilih-milih teman"],
+            answer: "Bersikap adil kepada semua orang",
+            explanation: "Bersikap adil kepada semua orang adalah salah satu contoh penerapan nilai Pancasila."
+        },
+        {
+            id: 30,
+            type: "true-false",
+            question: "Pernyataan: Perisai pada dada Garuda Pancasila berisi lima simbol yang mewakili lima sila Pancasila.",
+            image: null,
+            options: ["Benar", "Salah"],
+            answer: "Benar",
+            explanation: "Benar, perisai di dada Garuda berisi lima simbol mewakili lima sila Pancasila."
+        },
+        {
+            id: 31,
+            type: "true-false",
+            question: "Pernyataan: Sultan Hamid II adalah tokoh yang merancang awal lambang negara Garuda Pancasila.",
+            image: null,
+            options: ["Benar", "Salah"],
+            answer: "Benar",
+            explanation: "Benar, rancangan dikembangkan oleh Sultan Hamid II lalu disempurnakan bersama para tokoh seperti Soekarno."
+        },
+        {
+            id: 32,
+            type: "true-false",
+            question: "Pernyataan: Bulu pada leher Garuda Pancasila berjumlah 17 helai.",
+            image: null,
+            options: ["Salah", "Benar"],
+            answer: "Salah",
+            explanation: "Salah. Jumlah bulu pada leher adalah 45 helai (melambangkan tahun 45)."
+        },
+        {
+            id: 33,
+            type: "true-false",
+            question: "Pernyataan: Sila kelima Pancasila dilambangkan dengan simbol Padi dan Kapas.",
+            image: null,
+            options: ["Benar", "Salah"],
+            answer: "Benar",
+            explanation: "Benar, Padi dan Kapas melambangkan sila kelima Pancasila."
+        },
+        {
+            id: 34,
+            type: "true-false",
+            question: "Pernyataan: Garis hitam melintang di tengah perisai melambangkan garis khatulistiwa.",
+            image: null,
+            options: ["Benar", "Salah"],
+            answer: "Benar",
+            explanation: "Benar, garis hitam tersebut melambangkan garis khatulistiwa."
+        },
+        {
+            id: 35,
+            type: "multiple-choice",
+            question: "Di bagian manakah posisi perisai diletakkan pada Garuda Pancasila?",
+            image: null,
+            options: ["Dada Garuda", "Kepala Garuda", "Kaki Garuda", "Sayap Garuda"],
+            answer: "Dada Garuda",
+            explanation: "Perisai berada di bagian dada burung Garuda."
+        },
+        {
+            id: 36,
+            type: "multiple-choice",
+            question: "Bunyi sila pertama Pancasila adalah ...",
+            image: null,
+            options: ["Ketuhanan Yang Maha Esa", "Kemanusiaan yang Adil dan Beradab", "Persatuan Indonesia", "Keadilan Sosial bagi Seluruh Rakyat Indonesia"],
+            answer: "Ketuhanan Yang Maha Esa",
+            explanation: "Sila pertama berbunyi Ketuhanan Yang Maha Esa."
+        },
+        {
+            id: 37,
+            type: "multiple-choice",
+            question: "Bunyi sila kedua Pancasila adalah ...",
+            image: null,
+            options: ["Kemanusiaan yang Adil dan Beradab", "Ketuhanan Yang Maha Esa", "Persatuan Indonesia", "Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan"],
+            answer: "Kemanusiaan yang Adil dan Beradab",
+            explanation: "Sila kedua berbunyi Kemanusiaan yang Adil dan Beradab."
+        },
+        {
+            id: 38,
+            type: "multiple-choice",
+            question: "Bunyi sila ketiga Pancasila adalah ...",
+            image: null,
+            options: ["Persatuan Indonesia", "Ketuhanan Yang Maha Esa", "Keadilan Sosial bagi Seluruh Rakyat Indonesia", "Kemanusiaan yang Adil dan Beradab"],
+            answer: "Persatuan Indonesia",
+            explanation: "Sila ketiga berbunyi Persatuan Indonesia."
+        },
+        {
+            id: 39,
+            type: "multiple-choice",
+            question: "Bunyi sila keempat Pancasila adalah ...",
+            image: null,
+            options: ["Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan", "Persatuan Indonesia", "Ketuhanan Yang Maha Esa", "Keadilan Sosial bagi Seluruh Rakyat Indonesia"],
+            answer: "Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan",
+            explanation: "Sila keempat berbunyi Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan."
+        },
+        {
+            id: 40,
+            type: "multiple-choice",
+            question: "Bunyi sila kelima Pancasila adalah ...",
+            image: null,
+            options: ["Keadilan Sosial bagi Seluruh Rakyat Indonesia", "Persatuan Indonesia", "Ketuhanan Yang Maha Esa", "Kemanusiaan yang Adil dan Beradab"],
+            answer: "Keadilan Sosial bagi Seluruh Rakyat Indonesia",
+            explanation: "Sila kelima berbunyi Keadilan Sosial bagi Seluruh Rakyat Indonesia."
+        },
+        {
+            id: 41,
+            type: "situation",
+            question: "Siswa selalu menggunakan bahasa Indonesia saat berinteraksi di sekolah dan bangga akan kebudayaan bangsa. Hal ini menunjukkan sikap ...",
+            image: null,
+            options: ["Bangga menggunakan bahasa Indonesia dan melestarikan budaya bangsa", "Suka membeda-bedakan budaya", "Tidak mau belajar budaya", "Malu menjadi anak Indonesia"],
+            answer: "Bangga menggunakan bahasa Indonesia dan melestarikan budaya bangsa",
+            explanation: "Bangga menggunakan bahasa Indonesia dan melestarikan budaya adalah wujud cinta tanah air sesuai Pancasila."
+        },
+        {
+            id: 42,
+            type: "multiple-choice",
+            question: "Dalam mengambil keputusan bersama, bangsa Indonesia senantiasa mengutamakan ...",
+            image: null,
+            options: ["Musyawarah", "Keinginan satu orang", "Suara yang paling keras", "Kepentingan pribadi"],
+            answer: "Musyawarah",
+            explanation: "Garuda Pancasila bermakna bahwa bangsa Indonesia mengutamakan musyawarah dalam mengambil keputusan."
+        },
+        {
+            id: 43,
+            type: "true-false",
+            question: "Pernyataan: Jumlah bulu pada ekor Garuda Pancasila adalah 17 bulu.",
+            image: null,
+            options: ["Salah", "Benar"],
+            answer: "Salah",
+            explanation: "Salah. Jumlah bulu pada ekor adalah 8 bulu (melambangkan bulan Agustus)."
+        },
+        {
+            id: 44,
+            type: "guess-symbol",
+            question: "Simbol yang menggambarkan tempat berlindung dan persatuan masyarakat Indonesia yang beragam adalah ...",
+            image: IMAGES.pohon.url,
+            options: ["Pohon Beringin", "Bintang", "Rantai", "Kepala Banteng"],
+            answer: "Pohon Beringin",
+            explanation: "Pohon beringin menggambarkan tempat berlindung dan persatuan masyarakat Indonesia."
+        },
+        {
+            id: 45,
+            type: "guess-symbol",
+            question: "Simbol yang menggambarkan kebutuhan dasar dan kesejahteraan rakyat adalah ...",
+            image: IMAGES.padiKapas.url,
+            options: ["Padi dan Kapas", "Rantai", "Bintang", "Pohon Beringin"],
+            answer: "Padi dan Kapas",
+            explanation: "Padi dan kapas menggambarkan kebutuhan dasar (pangan dan sandang) serta kesejahteraan."
+        },
+        {
+            id: 46,
+            type: "situation",
+            question: "Menjaga persatuan dan kerukunan di antara teman kelas merupakan cerminan dari pengamalan nilai ...",
+            image: null,
+            options: ["Garuda Pancasila", "Permusuhan", "Individualisme", "Perpecahan"],
+            answer: "Garuda Pancasila",
+            explanation: "Menjaga persatuan dan kerukunan adalah wujud penerapan nilai-nilai Garuda Pancasila."
+        },
+        {
+            id: 47,
+            type: "multiple-choice",
+            question: "Burung Garuda mencengkeram pita putih dengan bagian ...",
+            image: null,
+            options: ["Kakinya", "Paruhnya", "Sayapnya", "Ekornya"],
+            answer: "Kakinya",
+            explanation: "Pada bagian kakinya terdapat pita bertuliskan 'Bhinneka Tunggal Ika'."
+        },
+        {
+            id: 48,
+            type: "true-false",
+            question: "Pernyataan: Garuda Pancasila menggambarkan jati diri bangsa Indonesia.",
+            image: null,
+            options: ["Benar", "Salah"],
+            answer: "Benar",
+            explanation: "Benar, Garuda Pancasila menggambarkan jati diri bangsa Indonesia."
+        },
+        {
+            id: 49,
+            type: "multiple-choice",
+            question: "Berapakah jumlah bulu pada bagian pangkal ekor atau bawah perisai?",
+            image: null,
+            options: ["19 bulu", "45 bulu", "17 bulu", "8 bulu"],
+            answer: "19 bulu",
+            explanation: "19 bulu berada pada bagian bawah perisai atau pangkal ekor."
+        },
+        {
+            id: 50,
+            type: "multiple-choice",
+            question: "Secara keseluruhan, Garuda Pancasila menunjukkan bahwa bangsa Indonesia berusaha mewujudkan ... bagi seluruh rakyat.",
+            image: null,
+            options: ["Keadilan dan kesejahteraan", "Kekayaan pribadi", "Kemenangan perang", "Persaingan ketat"],
+            answer: "Keadilan dan kesejahteraan",
+            explanation: "Garuda Pancasila bermakna bahwa bangsa Indonesia berusaha mewujudkan keadilan dan kesejahteraan bagi seluruh rakyat."
+        }
+    ];
+
+    /* --------------------------------------------------
+       D. DATA BADGES (PENCAPAIAN)
+       -------------------------------------------------- */
+    const BADGES_DATA = [
+        { id: "pemula", icon: "🌟", title: "Pemula", desc: "Berhasil menyelesaikan sesi kuis pertama." },
+        { id: "penjawab", icon: "🎯", title: "Penjawab Hebat", desc: "Mendapat skor kuis minimal 80." },
+        { id: "juara", icon: "🏆", title: "Juara Pancasila", desc: "Mendapat skor sempurna 100!" },
+        { id: "pantang", icon: "🔥", title: "Pantang Menyerah", desc: "Menyelesaikan minimal 3 sesi kuis." },
+        { id: "rajin", icon: "📚", title: "Rajin Belajar", desc: "Membuka seluruh materi slide pembelajaran." }
+    ];
+
+    /* --------------------------------------------------
+       E. STATE APLIKASI
+       -------------------------------------------------- */
+    let state = {
+        studentName: "Teman",
+        soundEnabled: true,
+        currentMateriIdx: 0,
+        quizSessionQuestions: [],
+        currentQuizIdx: 0,
+        quizScore: 0,
+        correctCount: 0,
+        wrongCount: 0,
+        usedQuestionIds: [],
+        completedSessionsCount: 0,
+        unlockedBadges: [],
+        viewedMateriSlides: new Set()
+    };
+
+    /* --------------------------------------------------
+       F. INISIALISASI TERKAIT LOCALSTORAGE & AUDIO
+       -------------------------------------------------- */
+    window.addEventListener('DOMContentLoaded', () => {
+        loadLocalData();
+        setupEventListeners();
+        renderBadges();
+        updateUserGreeting();
+    });
+
+    function loadLocalData() {
+        const savedName = localStorage.getItem('garuda_student_name');
+        if (savedName) state.studentName = savedName;
+
+        const savedBadges = localStorage.getItem('garuda_badges');
+        if (savedBadges) state.unlockedBadges = JSON.parse(savedBadges);
+
+        const savedSessions = localStorage.getItem('garuda_sessions_count');
+        if (savedSessions) state.completedSessionsCount = parseInt(savedSessions, 10);
+
+        document.getElementById('student-name').value = state.studentName !== "Teman" ? state.studentName : "";
+    }
+
+    function saveLocalData() {
+        localStorage.setItem('garuda_student_name', state.studentName);
+        localStorage.setItem('garuda_badges', JSON.stringify(state.unlockedBadges));
+        localStorage.setItem('garuda_sessions_count', state.completedSessionsCount.toString());
+    }
+
+    function setupEventListeners() {
+        document.getElementById('student-name').addEventListener('input', (e) => {
+            const val = e.target.value.trim();
+            state.studentName = val || "Teman";
+            updateUserGreeting();
+            saveLocalData();
+        });
+
+        document.getElementById('sound-toggle').addEventListener('click', toggleSound);
+
+        // Tutup modal dengan ESC
+        window.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") {
+                closeModal('symbol-modal');
+                closeModal('quiz-feedback-modal');
+            }
+        });
+    }
+
+    function updateUserGreeting() {
+        document.getElementById('user-greeting').innerText = `Halo, ${state.studentName}! 👋`;
+    }
+
+    /* --------------------------------------------------
+       G. SYSTEM AUDIO SYNTHESIZER (WEB AUDIO API)
+       -------------------------------------------------- */
+    let audioCtx = null;
+
+    function getAudioContext() {
+        if (!audioCtx) {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (AudioContext) audioCtx = new AudioContext();
+        }
+        if (audioCtx && audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+        return audioCtx;
+    }
+
+    function toggleSound() {
+        state.soundEnabled = !state.soundEnabled;
+        const btn = document.getElementById('sound-toggle');
+        btn.innerText = state.soundEnabled ? "🔊" : "🔇";
+    }
+
+    function playSound(type) {
+        if (!state.soundEnabled) return;
+        try {
+            const ctx = getAudioContext();
+            if (!ctx) return;
+
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            const now = ctx.currentTime;
+
+            if (type === 'correct') {
+                // Chime ceria dua nada (C5 ke G5)
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(523.25, now);
+                osc.frequency.exponentialRampToValueAtTime(783.99, now + 0.15);
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+                osc.start(now);
+                osc.stop(now + 0.35);
+            } else if (type === 'wrong') {
+                // Tone rendah (B3 ke F3)
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(246.94, now);
+                osc.frequency.linearRampToValueAtTime(174.61, now + 0.25);
+                gain.gain.setValueAtTime(0.25, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                osc.start(now);
+                osc.stop(now + 0.3);
+            } else if (type === 'finish') {
+                // Melody arpeggio sederhana
+                const notes = [523.25, 659.25, 783.99, 1046.50];
+                notes.forEach((freq, idx) => {
+                    const noteOsc = ctx.createOscillator();
+                    const noteGain = ctx.createGain();
+                    noteOsc.connect(noteGain);
+                    noteGain.connect(ctx.destination);
+                    noteOsc.type = 'triangle';
+                    noteOsc.frequency.setValueAtTime(freq, now + idx * 0.1);
+                    noteGain.gain.setValueAtTime(0.2, now + idx * 0.1);
+                    noteGain.gain.exponentialRampToValueAtTime(0.01, now + idx * 0.1 + 0.25);
+                    noteOsc.start(now + idx * 0.1);
+                    noteOsc.stop(now + idx * 0.1 + 0.25);
+                });
+            }
+        } catch (e) {
+            console.log("Audio not supported or blocked", e);
+        }
+    }
+
+    /* --------------------------------------------------
+       H. SISTEM CONFETTI ANIMATION (CANVAS)
+       -------------------------------------------------- */
+    function triggerConfetti() {
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const colors = ['#E52E2E', '#FFC107', '#4A90E2', '#2ECC71', '#9B59B6'];
+
+        for (let i = 0; i < 60; i++) {
+            particles.push({
+                x: canvas.width / 2,
+                y: canvas.height / 2,
+                vx: (Math.random() - 0.5) * 12,
+                vy: (Math.random() - 0.7) * 12,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                size: Math.random() * 8 + 4,
+                rotation: Math.random() * 360,
+                rspeed: (Math.random() - 0.5) * 10
+            });
+        }
+
+        let start = null;
+        function animateConfetti(timestamp) {
+            if (!start) start = timestamp;
+            const progress = timestamp - start;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += 0.3; // Gravity
+                p.rotation += p.rspeed;
+
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate((p.rotation * Math.PI) / 180);
+                ctx.fillStyle = p.color;
+                ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                ctx.restore();
+            });
+
+            if (progress < 1200) {
+                requestAnimationFrame(animateConfetti);
+            } else {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+        requestAnimationFrame(animateConfetti);
+    }
+
+    /* --------------------------------------------------
+       I. NAVIGASI SKRIN & ALUR KONTROL
+       -------------------------------------------------- */
+    function showScreen(screenId) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        const target = document.getElementById(screenId);
+        if (target) target.classList.add('active');
+        window.scrollTo(0, 0);
+    }
+
+    function startLearningModeChoice() {
+        showScreen('mode-select-screen');
+    }
+
+    /* --------------------------------------------------
+       J. SCRIPT MATERI INTERAKTIF & SLIDES
+       -------------------------------------------------- */
+    function openMateri(slideIdx) {
+        state.currentMateriIdx = slideIdx;
+        renderMateriSlide();
+        showScreen('materi-screen');
+    }
+
+    function renderMateriSlide() {
+        const slide = MATERI_SLIDES[state.currentMateriIdx];
+        const total = MATERI_SLIDES.length;
+
+        state.viewedMateriSlides.add(state.currentMateriIdx);
+        if (state.viewedMateriSlides.size === total) {
+            unlockBadge('rajin');
+        }
+
+        document.getElementById('materi-step-indicator').innerText = `Materi ${state.currentMateriIdx + 1} dari ${total}`;
+        const pct = ((state.currentMateriIdx + 1) / total) * 100;
+        document.getElementById('materi-progress-bar').style.width = `${pct}%`;
+
+        const container = document.getElementById('materi-slide-container');
+        container.innerHTML = `
+            <h2>${slide.title}</h2>
+            <div>${slide.content}</div>
+        `;
+
+        const interactiveBox = document.getElementById('symbols-explorer-box');
+        if (slide.showSymbolsInteractive) {
+            interactiveBox.style.display = 'block';
+        } else {
+            interactiveBox.style.display = 'none';
+        }
+
+        // Atur tombol prev/next
+        document.getElementById('btn-prev-materi').style.visibility = state.currentMateriIdx === 0 ? 'hidden' : 'visible';
+        const btnNext = document.getElementById('btn-next-materi');
+        if (state.currentMateriIdx === total - 1) {
+            btnNext.innerText = "🎮 Lanjut ke Kuis";
+        } else {
+            btnNext.innerText = "Berikutnya ➡️";
+        }
+    }
+
+    function prevMateri() {
+        if (state.currentMateriIdx > 0) {
+            state.currentMateriIdx--;
+            renderMateriSlide();
+        }
+    }
+
+    function nextMateri() {
+        if (state.currentMateriIdx < MATERI_SLIDES.length - 1) {
+            state.currentMateriIdx++;
+            renderMateriSlide();
+        } else {
+            startQuizSession();
+        }
+    }
+
+    /* --------------------------------------------------
+       K. INTERAKTIF POPUP DETAIL SIMBOL PANCASILA
+       -------------------------------------------------- */
+    function showSymbolDetail(silaNumber) {
+        const dataMap = {
+            1: {
+                title: "Sila Ke-1: Ketuhanan Yang Maha Esa",
+                name: "Simbol: Bintang",
+                img: IMAGES.bintang.url,
+                text: "Bintang menggambarkan cahaya rohani dan kepercayaan kepada Tuhan Yang Maha Esa.",
+                example: "Contoh Sikap: Menghormati teman yang berbeda agama saat beribadah.",
+                credit: IMAGES.bintang.credit
+            },
+            2: {
+                title: "Sila Ke-2: Kemanusiaan yang Adil dan Beradab",
+                name: "Simbol: Rantai",
+                img: IMAGES.rantai.url,
+                text: "Rantai menggambarkan hubungan antarmanusia yang saling membutuhkan, membantu, dan menghargai.",
+                example: "Contoh Sikap: Menolong kawan yang terjatuh atau butuh bantuan.",
+                credit: IMAGES.rantai.credit
+            },
+            3: {
+                title: "Sila Ke-3: Persatuan Indonesia",
+                name: "Simbol: Pohon Beringin",
+                img: IMAGES.pohon.url,
+                text: "Pohon beringin menggambarkan tempat berlindung dan persatuan masyarakat Indonesia yang beragam.",
+                example: "Contoh Sikap: Berteman baik tanpa membeda-bedakan suku atau asal daerah.",
+                credit: IMAGES.pohon.credit
+            },
+            4: {
+                title: "Sila Ke-4: Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan",
+                name: "Simbol: Kepala Banteng",
+                img: IMAGES.banteng.url,
+                text: "Banteng menggambarkan kehidupan bermasyarakat dan pentingnya berkumpul untuk bermusyawarah.",
+                example: "Contoh Sikap: Bermusyawarah saat memilih ketua kelas.",
+                credit: IMAGES.banteng.credit
+            },
+            5: {
+                title: "Sila Ke-5: Keadilan Sosial bagi Seluruh Rakyat Indonesia",
+                name: "Simbol: Padi dan Kapas",
+                img: IMAGES.padiKapas.url,
+                text: "Padi dan kapas menggambarkan kebutuhan dasar (pangan dan sandang) serta kesejahteraan rakyat.",
+                example: "Contoh Sikap: Bersikap adil dan tidak pilih kasih kepada semua teman.",
+                credit: IMAGES.padiKapas.credit
+            }
+        };
+
+        const info = dataMap[silaNumber];
+        if (!info) return;
+
+        document.getElementById('modal-symbol-title').innerText = info.title;
+        document.getElementById('modal-symbol-name').innerText = info.name;
+        document.getElementById('modal-symbol-img').src = info.img;
+        document.getElementById('modal-symbol-text').innerText = info.text;
+        document.getElementById('modal-symbol-example').innerText = info.example;
+        document.getElementById('modal-symbol-credit').innerText = info.credit;
+
+        document.getElementById('symbol-modal').classList.add('active');
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).classList.remove('active');
+    }
+
+    /* --------------------------------------------------
+       L. SISTEM KUIS, PENGACAKAN (SHUFFLE), & SKORING
+       -------------------------------------------------- */
+    function shuffleArray(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function startQuizSession() {
+        state.quizScore = 0;
+        state.correctCount = 0;
+        state.wrongCount = 0;
+        state.currentQuizIdx = 0;
+
+        // Dapatkan 10 soal acak tanpa duplikasi dari bank soal
+        let availableQuestions = QUIZ_BANK.filter(q => !state.usedQuestionIds.includes(q.id));
+
+        // Jika sisa soal kurang dari 10, reset riwayat soal yang sudah dipakai
+        if (availableQuestions.length < 10) {
+            state.usedQuestionIds = [];
+            availableQuestions = [...QUIZ_BANK];
+        }
+
+        const shuffledBank = shuffleArray(availableQuestions);
+        state.quizSessionQuestions = shuffledBank.slice(0, 10);
+
+        // Simpan ID soal ke daftar yang sudah pernah muncul
+        state.quizSessionQuestions.forEach(q => state.usedQuestionIds.push(q.id));
+
+        showScreen('quiz-screen');
+        renderQuizQuestion();
+    }
+
+    function renderQuizQuestion() {
+        const q = state.quizSessionQuestions[state.currentQuizIdx];
+        const total = state.quizSessionQuestions.length;
+
+        document.getElementById('quiz-question-number').innerText = `Soal ${state.currentQuizIdx + 1} / ${total}`;
+        document.getElementById('quiz-score-display').innerText = `⭐ Skor: ${state.quizScore}`;
+        document.getElementById('quiz-progress-bar').style.width = `${((state.currentQuizIdx + 1) / total) * 100}%`;
+
+        // Atur Gambar Soal jika tersedia
+        const imgBox = document.getElementById('quiz-image-box');
+        if (q.image) {
+            imgBox.style.display = 'block';
+            const qImg = document.getElementById('quiz-img');
+            qImg.src = q.image;
+            document.getElementById('quiz-img-caption').innerText = q.question;
+        } else {
+            imgBox.style.display = 'none';
+        }
+
+        document.getElementById('quiz-question-text').innerText = q.question;
+
+        // Acak Pilihan Jawaban
+        const shuffledOptions = shuffleArray(q.options);
+        const optionsContainer = document.getElementById('quiz-options-container');
+        optionsContainer.innerHTML = '';
+
+        const prefixes = ['A', 'B', 'C', 'D'];
+        shuffledOptions.forEach((optText, idx) => {
+            const prefix = prefixes[idx] || (idx + 1);
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerHTML = `
+                <span class="option-prefix">${prefix}</span>
+                <span>${optText}</span>
+            `;
+            btn.onclick = () => handleAnswerSelect(optText, q);
+            optionsContainer.appendChild(btn);
+        });
+    }
+
+    function handleAnswerSelect(selectedOption, questionObj) {
+        const isCorrect = (selectedOption === questionObj.answer);
+
+        const modalTitle = document.getElementById('feedback-title');
+        const modalIcon = document.getElementById('feedback-icon');
+        const modalText = document.getElementById('feedback-text');
+
+        if (isCorrect) {
+            state.quizScore += 10;
+            state.correctCount++;
+            playSound('correct');
+            triggerConfetti();
+
+            modalIcon.innerText = "🎉";
+            modalTitle.innerText = "BENAR!";
+            modalTitle.className = "feedback-title correct";
+            modalText.innerHTML = `
+                <strong>Hebat! Jawaban kamu tepat!</strong><br><br>
+                ${questionObj.explanation}
+            `;
+        } else {
+            state.wrongCount++;
+            playSound('wrong');
+
+            modalIcon.innerText = "💡";
+            modalTitle.innerText = "BELUM TEPAT";
+            modalTitle.className = "feedback-title wrong";
+            modalText.innerHTML = `
+                <strong>Tidak apa-apa, tetap semangat! Yuk pelajari jawabannya:</strong><br><br>
+                Jawaban yang benar: <strong>${questionObj.answer}</strong><br><br>
+                <em>${questionObj.explanation}</em>
+            `;
+        }
+
+        document.getElementById('quiz-score-display').innerText = `⭐ Skor: ${state.quizScore}`;
+        document.getElementById('quiz-feedback-modal').classList.add('active');
+    }
+
+    function nextQuestion() {
+        closeModal('quiz-feedback-modal');
+        state.currentQuizIdx++;
+
+        if (state.currentQuizIdx < state.quizSessionQuestions.length) {
+            renderQuizQuestion();
+        } else {
+            finishQuizSession();
+        }
+    }
+
+    /* --------------------------------------------------
+       M. HASIL KUIS & PENCAPAIAN (BADGES)
+       -------------------------------------------------- */
+    function finishQuizSession() {
+        playSound('finish');
+        state.completedSessionsCount++;
+        saveLocalData();
+
+        // Cek Badges
+        unlockBadge('pemula');
+        if (state.quizScore >= 80) unlockBadge('penjawab');
+        if (state.quizScore === 100) unlockBadge('juara');
+        if (state.completedSessionsCount >= 3) unlockBadge('pantang');
+
+        document.getElementById('result-score-val').innerText = `${state.quizScore} / 100`;
+        document.getElementById('result-correct-count').innerText = `✅ Benar: ${state.correctCount}`;
+        document.getElementById('result-wrong-count').innerText = `❌ Salah: ${state.wrongCount}`;
+
+        const titleEl = document.getElementById('result-title-msg');
+        const descEl = document.getElementById('result-desc-msg');
+
+        if (state.quizScore >= 90) {
+            titleEl.innerText = "🏆 LUAR BIASA!";
+            descEl.innerText = "Kamu sangat memahami Garuda Pancasila dengan sempurna!";
+        } else if (state.quizScore >= 70) {
+            titleEl.innerText = "🎉 HEBAT!";
+            descEl.innerText = "Kamu sudah memahami materi dengan baik!";
+        } else if (state.quizScore >= 50) {
+            titleEl.innerText = "👍 BAGUS!";
+            descEl.innerText = "Terus belajar agar pengetahuanmu semakin hebat!";
+        } else {
+            titleEl.innerText = "💪 JANGAN MENYERAH!";
+            descEl.innerText = "Yuk pelajari materinya lagi dan coba kembali kuisnya!";
+        }
+
+        showScreen('quiz-result-screen');
+    }
+
+    function unlockBadge(badgeId) {
+        if (!state.unlockedBadges.includes(badgeId)) {
+            state.unlockedBadges.push(badgeId);
+            saveLocalData();
+            renderBadges();
+        }
+    }
+
+    function renderBadges() {
+        const container = document.getElementById('badges-container');
+        if (!container) return;
+        container.innerHTML = '';
+
+        BADGES_DATA.forEach(b => {
+            const isUnlocked = state.unlockedBadges.includes(b.id);
+            const card = document.createElement('div');
+            card.className = `badge-card ${isUnlocked ? 'unlocked' : ''}`;
+            card.innerHTML = `
+                <div class="badge-icon">${b.icon}</div>
+                <h4>${b.title}</h4>
+                <p>${b.desc}</p>
+                <div style="margin-top:8px; font-weight:800; font-size:0.75rem; color:${isUnlocked ? '#2E7D32' : '#9E9E9E'};">
+                    ${isUnlocked ? 'TERBUKA ✅' : 'TERKUNCI 🔒'}
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    /* --------------------------------------------------
+       N. FALLBACK UNTUK GAMBAR
+       -------------------------------------------------- */
+    function handleImageError(imgEl, fallbackTitle) {
+        imgEl.style.display = 'none';
+        const parent = imgEl.parentElement;
+        if (parent) {
+            const fallbackDiv = parent.querySelector('.img-fallback');
+            if (fallbackDiv) {
+                fallbackDiv.style.display = 'block';
+                fallbackDiv.innerText = `🖼️ ${fallbackTitle}`;
+            }
+        }
+    }
+</script>
